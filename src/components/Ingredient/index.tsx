@@ -11,10 +11,10 @@ export type IngredientProps = {
 export const Ingredient = ({ name, image, selected = false, ...rest }: IngredientProps & PressableProps) =>  {
   return (
     <Pressable style={[styles.container, selected && styles.selected]} {...rest}>
-        <Image source={require('@/assets/apple.png')} style={styles.image}/>
+        <Image source={{ uri: image }} style={styles.image}/>
 
         <Text style={styles.title}>
-            Apple
+          {name}
         </Text>
     </Pressable>
   )

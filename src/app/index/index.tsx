@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { View, Text, ScrollView, Alert } from 'react-native'
 
+import { router } from 'expo-router'
+
 import { style } from './styles'
 import Ingredient from '@/components/Ingredient'
 import { Selected } from '@/components/Selected'
@@ -23,6 +25,10 @@ const Index = () => {
     ])
   }
 
+  const hanldeSearch = () => {
+    router.navigate('/recipes/')
+  }
+
   return (
     <View style={style.container}>
         <Text style={style.title}>
@@ -38,7 +44,11 @@ const Index = () => {
           ))}
         </ScrollView>
         {selected.length > 0 && (
-          <Selected quantity={selected.length} onClear={handleClearSelected} onSearch={() => {}}/>
+          <Selected 
+            quantity={selected.length} 
+            onClear={handleClearSelected} 
+            onSearch={hanldeSearch}
+          />
         )} 
     </View>
   )

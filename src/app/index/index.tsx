@@ -37,7 +37,9 @@ const Index = () => {
             <Ingredient key={index} name='apple' image='' selected={selected.includes(String(index))} onPress={() => handleToggleSelected(String(index))}/>
           ))}
         </ScrollView>
-        <Selected quantity={selected.length} onClear={handleClearSelected} onSearch={() => {}}/>
+        {selected.length > 0 && (
+          <Selected quantity={selected.length} onClear={handleClearSelected} onSearch={() => {}}/>
+        )} 
     </View>
   )
 }

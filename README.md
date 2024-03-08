@@ -1,7 +1,5 @@
-# Cook 🥗🍎
-This is a feed app. 🚀 <br />
-# Proposal 🔥
-😋🥗🍎App that suggests recipes based on ingredients selected.
+# Cook 😋🥗🍎
+App that suggests recipes based on ingredients selected.
 
 # Tecnologies 🚀
 React Native⚛️ <br />

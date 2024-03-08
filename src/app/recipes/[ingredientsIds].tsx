@@ -5,22 +5,34 @@ import { View, Text, FlatList } from 'react-native';
 import { styles } from './styles';
 import { Recipe } from '@/components/Recipe';
 import { Ingredients } from '@/components/Ingredients';
+import { Loading } from "@/components/Loading"
 import { services } from '@/services';
 
 const Recipes = () => {
     const [ingredients, setIngredients] = useState<IngredientResponse[]>([])
     const [recipes, setRecipes] = useState<RecipeResponse[]>([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const params = useLocalSearchParams<{ ingredientsIds: string }>()
     const ingredientsIds = params.ingredientsIds.split(',')
 
     useEffect(() => {
-        services.ingredientes.findByIds(ingredientsIds).then(setIngredients)
+        services.ingredientes
+        .findByIds(ingredientsIds)
+        .then(setIngredients)
+        .finally(() => setIsLoading(false))
     },[])
 
     useEffect(() => {
-        services.recipes.findByIngredientsIds(ingredientsIds).then(setRecipes)
+        services.recipes
+        .findByIngredientsIds(ingredientsIds)
+        .then(setRecipes)
+        .finally(() => setIsLoading(false))
     },[])
+
+    if (isLoading) {
+        return <Loading />
+    }
 
   return (
         <View style={styles.container}>
@@ -39,7 +51,12 @@ const Recipes = () => {
             <FlatList 
                 data={recipes}
                 keyExtractor={item => item.id}
-                renderItem={({ item }) => <Recipe recipe={item}/>}
+                renderItem={({ item }) => (
+                    <Recipe 
+                        recipe={item} 
+                        onPressOut={() => router.navigate('/recipe/' + item.id)}
+                    />
+                )}
                 style={styles.recipes}
                 contentContainerStyle={styles.recipesContent}
                 showsVerticalScrollIndicator={false}

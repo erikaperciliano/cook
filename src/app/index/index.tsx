@@ -8,10 +8,12 @@ import { style } from './styles'
 
 import Ingredient from '@/components/Ingredient'
 import { Selected } from '@/components/Selected'
+import { Loading } from '@/components/Loading'
 
 const Index = () => {
   const [selected, setSelected] = useState<string[]>([])
   const [ingredients, setIngredients] = useState<IngredientResponse[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleToggleSelected = (value: string) => {
     if(selected.includes(value)){
@@ -36,7 +38,12 @@ const Index = () => {
   services.ingredientes
   .findAll()
   .then(setIngredients)
+  .finally(() => setIsLoading(false))
  }, [])
+
+ if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <View style={style.container}>

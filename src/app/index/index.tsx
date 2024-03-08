@@ -29,11 +29,13 @@ const Index = () => {
   }
 
   const hanldeSearch = () => {
-    router.navigate('/recipes/')
+    router.navigate('/recipes/' + selected)
   }
 
  useEffect(() => {
-  services.ingredients.findAll().then(setIngredients)
+  services.ingredientes
+  .findAll()
+  .then(setIngredients)
  }, [])
 
   return (

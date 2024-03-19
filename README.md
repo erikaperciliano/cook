@@ -11,7 +11,7 @@ To obtain this project, follow the steps:
 2. Run the <code> npm install </code> command at the root of the cloned project folder to download the dependencies.
 3. Run <code> npx expo start </code> at the root of the project folder to start the application in development mode.🚀
 
-🎯Result:
+# 🎯Result:
 <br/>
 <img src="https://github.com/erikaperciliano/cook/assets/48223561/e62a4548-3cc5-4df8-9c79-aa8efac4888b" width="500" height="1000">
 <img src="https://github.com/erikaperciliano/cook/assets/48223561/e62a4548-3cc5-4df8-9c79-aa8efac4888b" width="500" height="1000">
